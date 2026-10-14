@@ -4,34 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das Baratas</title>
+    <title>Mundo das Baratas | Ciência, curiosidades e natureza</title>
+    <meta name="theme-color" content="#101a16">
+    <meta name="description" content="Explore o mundo das baratas: biologia, adaptações, ciclo de vida, curiosidades e importância ecológica.">
+    <link rel="preconnect" href="https://commons.wikimedia.org">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header>
-        <img src="imagens/barata.png" alt="Imagem de Barata" class="imagem-topo">
-
-        <div class="cabecalho">
-            <h1>🪳 MUNDO DAS BARATAS 🪳</h1>
-            <p>✨ Projeto de Front-End • Explorando o mundo das baratas ✨</p>
-        </div>
-
-        <nav>
-            <a href="#inicio">🏠 Início</a>
-            <a href="#conceito">🔬 Entomologia</a>
-            <a href="#propriedades">🧬 Adaptabilidade</a>
-            <a href="#reflexao">🍃 Alimentação</a>
-            <a href="#aplicacoes">🌎 Importância</a>
-            <a href="#quiz">🧠 Quiz</a>
-            <a href="#equipe">👥 Equipe</a>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Navegação principal">
+            <a class="brand" href="#inicio"><span class="brand-icon">🪳</span><span>MUNDO<span class="brand-accent">DAS</span>BARATAS</span></a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio">🏠 Início</a>
+                <a href="#conceito">🔬 Ciência</a>
+                <a href="#propriedades">🧬 Adaptação</a>
+                <a href="#galeria">📸 Galeria</a>
+                <a href="#aplicacoes">🌎 Natureza</a>
+                <a href="#quiz">🧠 Quiz</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">🌙 <span>Tema</span></button>
+            </div>
         </nav>
+        <section class="hero" id="inicio">
+            <div class="hero-copy">
+                <span class="eyebrow"><span class="live-dot"></span> EXPLORANDO O UNIVERSO DOS INSETOS</span>
+                <h1>Pequenas no tamanho.<br><span>Gigantes na sobrevivência.</span></h1>
+                <p>Descubra os segredos, as adaptações incríveis e a importância ecológica de um dos insetos mais resistentes do planeta.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#conceito">Explorar o universo <span>↘</span></a>
+                    <a class="button button-ghost" href="#quiz">Testar conhecimentos 🧠</a>
+                </div>
+                <div class="hero-note"><span>🌿</span> Ciência, curiosidades e natureza em um só lugar</div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+                <div class="hero-glow"></div>
+                <img src="imagens/barata.png" alt="Ilustração de uma barata em destaque" class="imagem-topo">
+                <span class="float-tag tag-top">🧬 300+ milhões de anos</span>
+                <span class="float-tag tag-bottom">⚡ Reflexos impressionantes</span>
+                <span class="hero-spark spark-one">✦</span><span class="hero-spark spark-two">✧</span>
+            </div>
+            <a class="scroll-cue" href="#intro-real"><span class="scroll-mouse"></span> ROLE PARA DESCOBRIR</a>
+        </section>
     </header>
 
-    <!-- CONTEÚDO -->
     <main>
+        <section class="intro-banner reveal" id="intro-real">
+            <div class="intro-icon">🔎</div>
+            <div><span class="section-kicker">UM MUNDO SURPREENDENTE</span><h2>Conheça além da aparência.</h2><p>Por trás da fama, existe um animal cheio de soluções biológicas fascinantes — e um papel importante nos ecossistemas.</p></div>
+        </section>
 
         <!-- INTRODUÇÃO -->
         <section id="inicio" class="introducao">
@@ -261,6 +288,17 @@
             </div>
         </section>
 
+        <!-- GALERIA VISUAL -->
+        <section id="galeria" class="gallery-section reveal">
+            <div class="section-heading"><div><span class="section-kicker">OBSERVE DE PERTO</span><h2>📸 Galeria do mundo das baratas</h2></div><p>Detalhes, espécies e fases do ciclo de vida.</p></div>
+            <div class="photo-grid">
+                <figure class="photo-card photo-large"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/American-cockroach.jpg?width=1200" alt="Barata-americana observada de perto"><figcaption><span>01 / ESPÉCIES</span><strong>Barata-americana</strong><small>Uma das espécies mais conhecidas</small></figcaption></figure>
+                <figure class="photo-card"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Periplaneta_americana_13zz.jpg?width=900" alt="Exemplar de Periplaneta americana"><figcaption><span>02 / BIOLOGIA</span><strong>Detalhes do corpo</strong><small>Antenas e exoesqueleto</small></figcaption></figure>
+                <figure class="photo-card"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Periplaneta-americana-Eier.jpg?width=900" alt="Ooteca de barata"><figcaption><span>03 / CICLO DE VIDA</span><strong>A ooteca</strong><small>A cápsula que protege os ovos</small></figcaption></figure>
+            </div>
+            <p class="image-credit">Imagens: Wikimedia Commons. Consulte as páginas de cada arquivo para detalhes de autoria e licença.</p>
+        </section>
+
         <!-- QUIZ -->
         <section id="quiz" class="quiz">
             <h2>🧠 Teste seus conhecimentos!</h2>
@@ -294,10 +332,17 @@
 
     </main>
 
+    <!-- CHAMADA FINAL -->
+    <section class="final-cta reveal">
+        <div class="cta-icon">🪳</div>
+        <div><span class="section-kicker">A NATUREZA É INCRÍVEL</span><h2>Curiosidade é o primeiro passo da descoberta.</h2><p>Continue explorando, fazendo perguntas e aprendendo sobre a biodiversidade do nosso planeta.</p></div>
+        <a class="button button-primary" href="#inicio">Voltar ao topo ↑</a>
+    </section>
+
     <!-- RODAPÉ -->
-    <footer>
-        <p>Projeto de Biologia - Estudo sobre Baratas</p>
-        <p>[Nome da escola] - 2026</p>
+    <footer class="site-footer">
+        <p>🪳 <strong>MUNDO DAS BARATAS</strong> · Projeto de Biologia</p>
+        <p>Feito com curiosidade e ciência · 2026</p>
     </footer>
 
     <script src="script.js"></script>
