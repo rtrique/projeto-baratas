@@ -13,7 +13,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 20px; }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
     background: linear-gradient(180deg, #eef2f7 0%, #e5eaf5 100%);
     color: #1f2937;
     line-height: 1.7;
