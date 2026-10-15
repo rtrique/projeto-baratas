@@ -31,6 +31,7 @@
                 <a href="#aplicacoes">🌎 Natureza</a>
                 <a href="#tecnologia">🤖 Tecnologia</a>
                 <a href="#pontos">⚖️ Prós e contras</a>
+                <a href="#guia-pratico">🏡 Guia útil</a>
                 <a href="#quiz">🧠 Quiz</a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">🌙 <span>Tema</span></button>
             </div>
@@ -328,6 +329,34 @@
                 </article>
             </div>
             <p class="small-note">Importante: isso não significa que todas as espécies sejam pragas. Muitas vivem longe das casas e cumprem funções ecológicas importantes.</p>
+        </section>
+
+
+        <!-- GUIA PRÁTICO PARA AJUDAR O VISITANTE -->
+        <section id="guia-pratico" class="help-section reveal">
+            <div class="section-heading">
+                <div><span class="section-kicker">DICA QUE SERVE NA VIDA REAL</span><h2>🏡 Encontrou uma barata em casa? Veja o que fazer.</h2></div>
+                <p>Um guia simples para prevenir infestações sem colocar pessoas, animais ou o ambiente em risco.</p>
+            </div>
+            <div class="help-alert"><span class="help-alert-icon">🧤</span><div><strong>Primeiro: evite o contato direto.</strong><p>Não pegue a barata com as mãos. Se houver crianças ou animais por perto, mantenha-os afastados da área.</p></div></div>
+            <div class="help-steps">
+                <article class="help-step"><span class="step-number">01</span><div><h3>Guarde os alimentos</h3><p>Feche embalagens, guarde a comida em recipientes e não deixe louça suja ou migalhas acumuladas.</p></div><span class="step-icon">🥫</span></article>
+                <article class="help-step"><span class="step-number">02</span><div><h3>Reduza água e umidade</h3><p>Seque a pia, corrija vazamentos quando possível e evite deixar água parada durante a noite.</p></div><span class="step-icon">💧</span></article>
+                <article class="help-step"><span class="step-number">03</span><div><h3>Feche os pontos de entrada</h3><p>Verifique frestas, rodapés, ralos e passagens de tubulação. Use telas ou vedação adequada quando necessário.</p></div><span class="step-icon">🛠️</span></article>
+                <article class="help-step"><span class="step-number">04</span><div><h3>Se continuar aparecendo, peça ajuda</h3><p>Se houver sinais de infestação, procure um serviço profissional de controle de pragas e siga o rótulo de qualquer produto autorizado.</p></div><span class="step-icon">🧑‍🔧</span></article>
+            </div>
+            <div class="safety-note"><strong>⚠️ Segurança importante</strong><p>Nunca misture produtos de limpeza ou inseticidas. Não aplique produtos perto de alimentos, crianças ou animais; siga as instruções do rótulo e as orientações profissionais.</p></div>
+            <div class="help-checklist">
+                <div><h3>✅ Monte seu plano de prevenção</h3><p>Marque o que você já fez. Seu progresso fica salvo neste navegador.</p></div>
+                <label><input type="checkbox" class="prevention-check" value="food"> Alimentos fechados e superfícies limpas</label>
+                <label><input type="checkbox" class="prevention-check" value="water"> Pia seca e vazamentos verificados</label>
+                <label><input type="checkbox" class="prevention-check" value="trash"> Lixeira fechada e lixo retirado regularmente</label>
+                <label><input type="checkbox" class="prevention-check" value="gaps"> Frestas e ralos verificados</label>
+                <div class="mission-progress"><div class="mission-progress-bar" id="preventionProgressBar"></div></div>
+                <p id="preventionProgressText" class="interaction-result" aria-live="polite">0 de 4 medidas concluídas.</p>
+                <button class="button button-primary" id="copyPreventionPlan" type="button">📋 Copiar meu plano</button>
+                <p id="preventionFeedback" class="small-note" aria-live="polite"></p>
+            </div>
         </section>
 
         <section id="missao" class="mission-section reveal">
