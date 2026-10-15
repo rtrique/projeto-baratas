@@ -176,3 +176,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+// Checklist de prevenção doméstica: progresso salvo apenas no navegador.
+document.addEventListener("DOMContentLoaded", () => {
+    const checks = [...document.querySelectorAll(".prevention-check")];
+    const bar = document.getElementById("preventionProgressBar");
+    const textNode = document.getElementById("preventionProgressText");
+    const feedback = document.getElementById("preventionFeedback");
+    const update = () => {
+        const done = checks.filter(item => item.checked).length;
+        if (bar) bar.style.width = (done / Math.max(checks.length, 1) * 100) + "%";
+        if (textNode) textNode.textContent = done === checks.length
+            ? "🎉 Plano completo! Continue mantendo esses hábitos."
+            : done + " de " + checks.length + " medidas concluídas.";
+        try { localStorage.setItem("baratas-prevencao", JSON.stringify(checks.filter(item => item.checked).map(item => item.value))); } catch (_) {}
+    };
+    try {
+        const saved = JSON.parse(localStorage.getItem("baratas-prevencao") || "[]");
+        checks.forEach(item => item.checked = saved.includes(item.value));
+    } catch (_) {}
+    checks.forEach(item => item.addEventListener("change", update));
+    update();
+
+    document.getElementById("copyPreventionPlan")?.addEventListener("click", async () => {
+        const done = checks.filter(item => item.checked).map(item => item.parentElement.textContent.trim());
+        const pending = checks.filter(item => !item.checked).map(item => item.parentElement.textContent.trim());
+        const plan = "MEU PLANO DE PREVENÇÃO CONTRA BARATAS\n\nConcluído:\n" +
+            (done.length ? done.map(x => "✓ " + x).join("\n") : "Ainda não marquei nenhuma medida.") +
+            "\n\nPróximos passos:\n" + (pending.length ? pending.map(x => "□ " + x).join("\n") : "Tudo marcado!") +
+            "\n\nDica de segurança: nunca misture produtos de limpeza ou inseticidas e siga as instruções do rótulo.";
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(plan);
+                if (feedback) feedback.textContent = "Plano copiado! Você pode colar nas suas notas ou enviar para alguém.";
+            } else {
+                const field = document.createElement("textarea");
+                field.value = plan;
+                field.setAttribute("readonly", "");
+                field.style.position = "fixed";
+                field.style.opacity = "0";
+                document.body.appendChild(field);
+                field.select();
+                const ok = document.execCommand("copy");
+                field.remove();
+                if (feedback) feedback.textContent = ok ? "Plano copiado! Você pode colar nas suas notas." : plan;
+            }
+        } catch (_) {
+            if (feedback) feedback.textContent = plan;
+        }
+    });
+});
