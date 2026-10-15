@@ -199,31 +199,73 @@ document.addEventListener("DOMContentLoaded", () => {
     checks.forEach(item => item.addEventListener("change", update));
     update();
 
-    document.getElementById("copyPreventionPlan")?.addEventListener("click", async () => {
-        const done = checks.filter(item => item.checked).map(item => item.parentElement.textContent.trim());
-        const pending = checks.filter(item => !item.checked).map(item => item.parentElement.textContent.trim());
-        const plan = "MEU PLANO DE PREVENÇÃO CONTRA BARATAS\n\nConcluído:\n" +
-            (done.length ? done.map(x => "✓ " + x).join("\n") : "Ainda não marquei nenhuma medida.") +
-            "\n\nPróximos passos:\n" + (pending.length ? pending.map(x => "□ " + x).join("\n") : "Tudo marcado!") +
-            "\n\nDica de segurança: nunca misture produtos de limpeza ou inseticidas e siga as instruções do rótulo.";
+    const copyButton = document.getElementById("copyPreventionPlan");
+    const copyPlanFallback = (value) => {
+        const field = document.createElement("textarea");
+        field.value = value;
+        field.setAttribute("readonly", "");
+        field.setAttribute("aria-hidden", "true");
+        field.style.position = "fixed";
+        field.style.left = "0";
+        field.style.top = "0";
+        field.style.width = "2px";
+        field.style.height = "2px";
+        field.style.padding = "0";
+        field.style.border = "0";
+        field.style.opacity = "0.01";
+        field.style.fontSize = "16px";
+        document.body.appendChild(field);
+        field.focus();
+        field.select();
+        field.setSelectionRange(0, field.value.length);
+        let copied = false;
+        try { copied = document.execCommand("copy"); } catch (_) {}
+        field.remove();
+        return copied;
+    };
+
+    copyButton?.addEventListener("click", async () => {
+        const getLabel = item => {
+            const label = item.closest("label");
+            return label ? label.textContent.trim().replace(/\\s+/g, " ") : item.value;
+        };
+        const done = checks.filter(item => item.checked).map(getLabel);
+        const pending = checks.filter(item => !item.checked).map(getLabel);
+        const plan = "MEU PLANO DE PREVENÇÃO CONTRA BARATAS\\n\\nConcluído:\\n" +
+            (done.length ? done.map(x => "✓ " + x).join("\\n") : "Ainda não marquei nenhuma medida.") +
+            "\\n\\nPróximos passos:\\n" + (pending.length ? pending.map(x => "□ " + x).join("\\n") : "Tudo marcado!") +
+            "\\n\\nDica de segurança: nunca misture produtos de limpeza ou inseticidas e siga as instruções do rótulo.";
+        const showFeedback = message => {
+            if (feedback) {
+                feedback.textContent = message;
+                feedback.classList.remove("feedback-pop");
+                void feedback.offsetWidth;
+                feedback.classList.add("feedback-pop");
+            }
+        };
+        let copied = false;
         try {
             if (navigator.clipboard && window.isSecureContext) {
                 await navigator.clipboard.writeText(plan);
-                if (feedback) feedback.textContent = "Plano copiado! Você pode colar nas suas notas ou enviar para alguém.";
-            } else {
-                const field = document.createElement("textarea");
-                field.value = plan;
-                field.setAttribute("readonly", "");
-                field.style.position = "fixed";
-                field.style.opacity = "0";
-                document.body.appendChild(field);
-                field.select();
-                const ok = document.execCommand("copy");
-                field.remove();
-                if (feedback) feedback.textContent = ok ? "Plano copiado! Você pode colar nas suas notas." : plan;
+                copied = true;
             }
-        } catch (_) {
-            if (feedback) feedback.textContent = plan;
+        } catch (_) {}
+        if (!copied) copied = copyPlanFallback(plan);
+
+        if (copied) {
+            showFeedback("✅ Plano copiado! Agora você pode colar nas suas notas ou enviar para alguém.");
+            if (copyButton) {
+                const originalText = copyButton.dataset.originalText || copyButton.textContent;
+                copyButton.dataset.originalText = originalText;
+                copyButton.textContent = "✓ Copiado!";
+                copyButton.classList.add("copy-success");
+                window.setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.classList.remove("copy-success");
+                }, 2200);
+            }
+        } else {
+            showFeedback("Seu navegador bloqueou a cópia automática. O plano está abaixo — selecione e copie manualmente:\\n\\n" + plan);
         }
     });
 });
