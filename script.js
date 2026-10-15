@@ -227,14 +227,14 @@ document.addEventListener("DOMContentLoaded", () => {
     copyButton?.addEventListener("click", async () => {
         const getLabel = item => {
             const label = item.closest("label");
-            return label ? label.textContent.trim().replace(/\\s+/g, " ") : item.value;
+            return label ? label.textContent.trim().replace(/\s+/g, " ") : item.value;
         };
         const done = checks.filter(item => item.checked).map(getLabel);
         const pending = checks.filter(item => !item.checked).map(getLabel);
-        const plan = "MEU PLANO DE PREVENÇÃO CONTRA BARATAS\\n\\nConcluído:\\n" +
-            (done.length ? done.map(x => "✓ " + x).join("\\n") : "Ainda não marquei nenhuma medida.") +
-            "\\n\\nPróximos passos:\\n" + (pending.length ? pending.map(x => "□ " + x).join("\\n") : "Tudo marcado!") +
-            "\\n\\nDica de segurança: nunca misture produtos de limpeza ou inseticidas e siga as instruções do rótulo.";
+        const plan = "MEU PLANO DE PREVENÇÃO CONTRA BARATAS\n\nConcluído:\n" +
+            (done.length ? done.map(x => "✓ " + x).join("\n") : "Ainda não marquei nenhuma medida.") +
+            "\n\nPróximos passos:\n" + (pending.length ? pending.map(x => "□ " + x).join("\n") : "Tudo marcado!") +
+            "\n\nDica de segurança: nunca misture produtos de limpeza ou inseticidas e siga as instruções do rótulo.";
         const showFeedback = message => {
             if (feedback) {
                 feedback.textContent = message;
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 2200);
             }
         } else {
-            showFeedback("Seu navegador bloqueou a cópia automática. O plano está abaixo — selecione e copie manualmente:\\n\\n" + plan);
+            showFeedback("Seu navegador bloqueou a cópia automática. O plano está abaixo — selecione e copie manualmente:\n\n" + plan);
         }
     });
 });
