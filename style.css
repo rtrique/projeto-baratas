@@ -30,3 +30,24 @@ section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(23px,3vw,31px)
 @media(max-width:760px){.navbar{height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:67px;left:12px;right:12px;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links>a,.theme-toggle{padding:12px 14px;text-align:left;font-size:14px}.theme-toggle{border-radius:10px}.hero{grid-template-columns:1fr;padding:55px 25px 78px;gap:5px;text-align:center;min-height:auto}.hero-copy{order:1}.hero h1{font-size:clamp(39px,10vw,62px);letter-spacing:-2.5px;margin:18px 0}.hero-copy>p{font-size:15px;margin:auto}.hero-actions{justify-content:center}.hero-note{justify-content:center;margin-top:22px}.hero-visual{order:0;height:270px;max-width:420px;width:100%;margin:auto}.imagem-topo{height:260px;max-width:330px}.float-tag{font-size:9px;padding:8px 10px}.tag-top{top:16px;right:0}.tag-bottom{bottom:20px;left:0}.scroll-cue{bottom:22px}.intro-banner{align-items:flex-start;padding:23px;gap:15px}.intro-icon{width:48px;height:48px;font-size:22px;border-radius:14px}.section-heading{display:block}.section-heading>p{margin-top:10px}.final-cta{flex-wrap:wrap;padding:24px}.final-cta>div:nth-child(2){min-width:calc(100% - 90px)}.final-cta .button{margin-left:0}.photo-grid{gap:10px}.photo-card{min-height:220px}.photo-card img{min-height:220px}.photo-card figcaption{left:13px;bottom:13px}.photo-card figcaption strong{font-size:16px}}
 @media(max-width:480px){main{padding:28px 14px 55px}.hero{padding-left:18px;padding-right:18px}.hero h1{font-size:39px}.eyebrow{font-size:9px;letter-spacing:1.3px}.hero-actions{flex-direction:column;align-items:stretch}.button{width:100%}.intro-banner{display:block}.intro-icon{margin-bottom:16px}main>section:not(.intro-banner):not(.final-cta){padding:22px 18px;border-radius:18px}.cards{grid-template-columns:1fr}.photo-grid{grid-template-columns:1fr}.photo-large{grid-column:auto}.photo-card,.photo-card img{min-height:255px}.final-cta{display:block}.cta-icon{margin-bottom:16px}.final-cta .button{margin-top:18px}.equipe{grid-template-columns:1fr 1fr}.brand{font-size:14px}.brand-icon{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal,.reveal-stagger>*{opacity:1;transform:none}}
+
+
+/* Novas áreas interativas: tecnologia, balanço e missão cidadã */
+.tech-section .destaque a,.site-footer a{color:var(--accent);text-underline-offset:3px}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}
+.choice-button{border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);padding:11px 14px;cursor:pointer;transition:transform .2s,border-color .2s}
+.choice-button:hover,.choice-button:focus-visible,.choice-button.selected{border-color:var(--accent);transform:translateY(-2px);outline:none}
+.interaction-result{padding:13px 15px;border-radius:12px;background:rgba(183,243,107,.08);border:1px solid var(--line);margin-top:12px!important;font-size:14px}
+.pros-cons-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0}
+.pros-panel,.cons-panel{padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--surface-2)}
+.pros-panel{border-top:3px solid #75d69a}.cons-panel{border-top:3px solid #e6a16e}
+.pros-panel h3,.cons-panel h3{font:600 19px 'Space Grotesk',sans-serif;margin-bottom:12px;color:var(--text)}
+.pros-panel li::marker{color:#75d69a}.cons-panel li::marker{color:#e6a16e}
+.small-note{font-size:12px!important;margin-top:15px!important}
+.mission-list{display:grid;gap:11px;margin:22px 0}
+.mission-list label{display:flex;align-items:flex-start;gap:12px;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--surface-2);cursor:pointer;color:var(--text);font-size:14px}
+.mission-list input{accent-color:var(--accent);width:18px;height:18px;flex:0 0 auto;margin-top:3px}
+.mission-list label:has(input:checked){border-color:var(--accent);background:rgba(183,243,107,.07)}
+.mission-progress{height:9px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line);margin-top:20px}
+.mission-progress-bar{width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px;transition:width .3s}
+@media(max-width:760px){.pros-cons-grid{grid-template-columns:1fr}.choice-row{flex-direction:column}.choice-button{width:100%;text-align:left}.pros-panel,.cons-panel{padding:20px}}
