@@ -111,3 +111,68 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { once: true });
     });
 });
+
+
+// Interações educativas adicionais.
+document.addEventListener("DOMContentLoaded", () => {
+    const inventionCopy = {
+        resgate: "🚨 Um robô pequeno e flexível poderia explorar frestas em escombros e enviar imagens para equipes de resgate. É uma inspiração de pesquisa, não uma solução universal pronta.",
+        ambiente: "🌿 Um robô inspirado na locomoção da barata poderia circular por terrenos irregulares para observar áreas naturais e coletar dados ambientais.",
+        saude: "🩺 Sensores e robôs miniaturizados podem, no futuro, ajudar profissionais a inspecionar locais de difícil acesso. A segurança e a validação médica são indispensáveis."
+    };
+    document.querySelectorAll("[data-invention]").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll("[data-invention]").forEach(item => item.classList.remove("selected"));
+            button.classList.add("selected");
+            const result = document.getElementById("inventionResult");
+            if (result) result.textContent = inventionCopy[button.dataset.invention] || "";
+        });
+    });
+
+    const missionChecks = [...document.querySelectorAll(".mission-check")];
+    const progressBar = document.getElementById("missionProgressBar");
+    const progressText = document.getElementById("missionProgressText");
+    const updateMission = () => {
+        const done = missionChecks.filter(check => check.checked).length;
+        if (progressBar) progressBar.style.width = (done / Math.max(missionChecks.length, 1) * 100) + "%";
+        if (progressText) progressText.textContent = done === missionChecks.length
+            ? "🎉 Missão concluída! Você deu passos para aprender e compartilhar informação responsável."
+            : done + " de " + missionChecks.length + " ações concluídas. Toda atitude consciente conta!";
+        try { localStorage.setItem("baratas-missao", JSON.stringify(missionChecks.filter(c => c.checked).map(c => c.value))); } catch (_) {}
+    };
+    try {
+        const saved = JSON.parse(localStorage.getItem("baratas-missao") || "[]");
+        missionChecks.forEach(check => check.checked = saved.includes(check.value));
+    } catch (_) {}
+    missionChecks.forEach(check => check.addEventListener("change", updateMission));
+    updateMission();
+
+    const shareButton = document.getElementById("shareMission");
+    const shareFeedback = document.getElementById("shareFeedback");
+    shareButton?.addEventListener("click", async () => {
+        const message = "Você sabia? As baratas têm um papel na reciclagem de matéria orgânica e também inspiram pesquisas em robótica. Conhecer a natureza ajuda a tomar decisões melhores! — Mundo das Baratas";
+        try {
+            if (navigator.share) {
+                await navigator.share({ title: "Mundo das Baratas", text: message });
+                if (shareFeedback) shareFeedback.textContent = "Mensagem compartilhada!";
+            } else if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(message);
+                if (shareFeedback) shareFeedback.textContent = "Mensagem copiada! Agora é só enviar para alguém.";
+            } else {
+                const field = document.createElement("textarea");
+                field.value = message;
+                field.setAttribute("readonly", "");
+                field.style.position = "fixed";
+                field.style.opacity = "0";
+                document.body.appendChild(field);
+                field.select();
+                const copied = document.execCommand("copy");
+                field.remove();
+                if (shareFeedback) shareFeedback.textContent = copied ? "Mensagem copiada! Agora é só enviar para alguém." : message;
+            }
+        } catch (error) {
+            if (error && error.name === "AbortError") return;
+            if (shareFeedback) shareFeedback.textContent = message;
+        }
+    });
+});
