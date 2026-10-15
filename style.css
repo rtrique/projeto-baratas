@@ -51,3 +51,30 @@ section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(23px,3vw,31px)
 .mission-progress{height:9px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line);margin-top:20px}
 .mission-progress-bar{width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px;transition:width .3s}
 @media(max-width:760px){.pros-cons-grid{grid-template-columns:1fr}.choice-row{flex-direction:column}.choice-button{width:100%;text-align:left}.pros-panel,.cons-panel{padding:20px}}
+
+
+/* Guia prático: utilidade real + microanimações acessíveis */
+.help-section{position:relative;overflow:hidden}
+.help-section::before{content:"";position:absolute;top:-95px;right:-70px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(183,243,107,.12),transparent 70%);pointer-events:none;animation:helpGlow 7s ease-in-out infinite alternate}
+.help-alert{display:flex;gap:16px;align-items:flex-start;padding:20px;border:1px solid rgba(230,161,110,.38);background:rgba(230,161,110,.07);border-radius:16px;margin:24px 0}
+.help-alert-icon{font-size:28px;animation:softFloat 3.2s ease-in-out infinite}
+.help-alert p,.help-step p,.safety-note p,.help-checklist>p{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.75}
+.help-steps{display:grid;gap:12px;margin:20px 0}
+.help-step{display:grid;grid-template-columns:46px 1fr 42px;align-items:center;gap:15px;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.help-step:hover{transform:translateX(5px);border-color:var(--accent);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.step-number{font:700 18px 'Space Grotesk',sans-serif;color:var(--accent)}
+.help-step h3,.help-checklist h3{margin:0;color:var(--text);font:600 17px 'Space Grotesk',sans-serif}
+.step-icon{font-size:27px;text-align:center;animation:softFloat 4s ease-in-out infinite}
+.help-step:nth-child(even) .step-icon{animation-delay:-1.7s}
+.safety-note{padding:18px 20px;border-radius:14px;border-left:3px solid #e6a16e;background:rgba(230,161,110,.07);margin:20px 0}
+.safety-note strong{color:var(--text)}
+.help-checklist{margin-top:28px;padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+.help-checklist>div:first-child p{font-size:14px;color:var(--muted);line-height:1.7;margin:8px 0 16px}
+.help-checklist label{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer;color:var(--text);font-size:14px}
+.help-checklist input{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto;margin-top:2px}
+.help-checklist label:has(input:checked){color:var(--accent)}
+.help-checklist .button{margin-top:15px}
+@keyframes softFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+@keyframes helpGlow{from{transform:translate3d(0,0,0) scale(.92);opacity:.65}to{transform:translate3d(-20px,15px,0) scale(1.1);opacity:1}}
+@media(max-width:600px){.help-step{grid-template-columns:34px 1fr 28px;gap:10px;padding:15px}.step-icon{font-size:22px}.help-checklist{padding:18px}.help-alert{padding:16px}}
+@media(prefers-reduced-motion:reduce){.help-alert-icon,.step-icon,.help-section::before{animation:none!important}.help-step{transition:none}.help-step:hover{transform:none}}
