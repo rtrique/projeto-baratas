@@ -78,3 +78,41 @@ section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(23px,3vw,31px)
 @keyframes helpGlow{from{transform:translate3d(0,0,0) scale(.92);opacity:.65}to{transform:translate3d(-20px,15px,0) scale(1.1);opacity:1}}
 @media(max-width:600px){.help-step{grid-template-columns:34px 1fr 28px;gap:10px;padding:15px}.step-icon{font-size:22px}.help-checklist{padding:18px}.help-alert{padding:16px}}
 @media(prefers-reduced-motion:reduce){.help-alert-icon,.step-icon,.help-section::before{animation:none!important}.help-step{transition:none}.help-step:hover{transform:none}}
+
+
+/* Animações extras: movimento sutil, destaque de interação e feedback acessível. */
+.hero-copy .eyebrow{animation:fadeSlideDown .8s .12s both}
+.hero h1{animation:titleReveal .9s .18s both}
+.hero-copy>p{animation:fadeSlideUp .8s .32s both}
+.hero-actions{animation:fadeSlideUp .8s .44s both}
+.hero-note{animation:fadeSlideUp .8s .56s both}
+.hero-visual .float-tag{transition:transform .3s,border-color .3s}
+.hero-visual .float-tag:hover{transform:translateY(-7px) rotate(-2deg);border-color:var(--accent)}
+.button,.choice-button,.quiz button,#copyPreventionPlan{position:relative;overflow:hidden}
+.button::after,.choice-button::after,.quiz button::after,#copyPreventionPlan::after{content:"";position:absolute;inset:0 auto 0 -130%;width:65%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);transition:left .65s;pointer-events:none}
+.button:hover::after,.choice-button:hover::after,.quiz button:hover::after,#copyPreventionPlan:hover::after{left:150%}
+.card,.help-step,.photo-card,.pros-panel,.cons-panel,.lei,.curiosidade{transition:transform .35s cubic-bezier(.2,.75,.25,1),box-shadow .35s,border-color .35s}
+.card:hover,.photo-card:hover{transform:translateY(-7px)}
+.help-step:hover{transform:translateX(5px) scale(1.006)}
+.photo-card img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .6s}
+.photo-card:hover img{transform:scale(1.055);filter:saturate(1.12)}
+.section-kicker{animation:kickerPulse 4s ease-in-out infinite}
+.help-section::before{content:"";position:absolute;inset:-30% auto auto -10%;width:45%;height:60%;background:radial-gradient(circle,rgba(183,243,107,.075),transparent 70%);pointer-events:none;animation:helpGlow 9s ease-in-out infinite alternate}
+#preventionProgressBar,#missionProgressBar{transition:width .65s cubic-bezier(.22,.8,.2,1)}
+#copyPreventionPlan.copy-success{animation:successPop .35s ease-out;background:var(--accent);color:#14200f}
+.feedback-pop{animation:feedbackReveal .35s ease-out}
+.mission-check:checked,.prevention-check:checked{animation:checkBounce .28s ease-out}
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes titleReveal{from{opacity:0;transform:translateY(18px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes kickerPulse{0%,100%{opacity:1}50%{opacity:.78}}
+@keyframes successPop{0%{transform:scale(.96)}70%{transform:scale(1.035)}100%{transform:scale(1)}}
+@keyframes feedbackReveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes checkBounce{0%{transform:scale(.8)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+@media(hover:none){.card:hover,.photo-card:hover,.help-step:hover{transform:none}.photo-card:hover img{transform:none}}
+@media(prefers-reduced-motion:reduce){
+ .hero-copy .eyebrow,.hero h1,.hero-copy>p,.hero-actions,.hero-note,.section-kicker{animation:none!important}
+ .button::after,.choice-button::after,.quiz button::after,#copyPreventionPlan::after{display:none}
+ .card,.help-step,.photo-card,.pros-panel,.cons-panel,.lei,.curiosidade,.photo-card img,#preventionProgressBar,#missionProgressBar{transition:none!important}
+ .card:hover,.photo-card:hover,.help-step:hover{transform:none}
+}
