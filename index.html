@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="color-scheme" content="dark light">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,6 +29,8 @@
                 <a href="#propriedades">🧬 Adaptação</a>
                 <a href="#galeria">📸 Galeria</a>
                 <a href="#aplicacoes">🌎 Natureza</a>
+                <a href="#tecnologia">🤖 Tecnologia</a>
+                <a href="#pontos">⚖️ Prós e contras</a>
                 <a href="#quiz">🧠 Quiz</a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">🌙 <span>Tema</span></button>
             </div>
@@ -276,6 +280,72 @@
             </div>
         </section>
 
+
+        <section id="tecnologia" class="tech-section reveal">
+            <div class="section-heading">
+                <div><span class="section-kicker">BIOINSPIRAÇÃO</span><h2>🤖 O que a barata tem a ver com a tecnologia?</h2></div>
+                <p>A natureza também funciona como laboratório de ideias para engenheiros e cientistas.</p>
+            </div>
+            <p>O estudo das baratas ajuda pesquisadores a entender como um corpo pequeno consegue se mover rapidamente, atravessar espaços estreitos e continuar andando em terrenos irregulares. Esses princípios inspiram projetos de robótica — não significa que toda tecnologia já esteja pronta para uso.</p>
+            <div class="cards">
+                <article class="card"><h3>🦿 Robôs que passam por frestas</h3><p>O corpo flexível e a capacidade de se comprimir inspiram robôs pequenos capazes de explorar espaços estreitos, inclusive em cenários de busca e resgate.</p></article>
+                <article class="card"><h3>🧭 Sensores e reação rápida</h3><p>O modo como a barata percebe o ambiente ajuda a pensar em sensores e sistemas de navegação que reajam a obstáculos com rapidez.</p></article>
+                <article class="card"><h3>🛠️ Estruturas resistentes</h3><p>O exoesqueleto e as pernas articuladas inspiram mecanismos leves, resistentes e adaptáveis a terrenos difíceis.</p></article>
+            </div>
+            <div class="destaque"><strong>🔎 Pesquisa real:</strong><p>Pesquisadores da Universidade do Colorado estudaram a locomoção de baratas em espaços estreitos para desenvolver um robô inspirado nessa habilidade. <a href="https://www.colorado.edu/lab/jayaram/research/confined-space-locomotion" target="_blank" rel="noopener noreferrer">Conheça a pesquisa (em inglês)</a>.</p></div>
+            <div class="destaque"><strong>💭 Pense como um inventor:</strong><p>Se você pudesse copiar uma habilidade da barata para criar uma tecnologia que ajudasse pessoas, qual escolheria?</p>
+                <div class="choice-row" role="group" aria-label="Escolha uma inspiração tecnológica">
+                    <button type="button" class="choice-button" data-invention="resgate">🚨 Robô de resgate</button>
+                    <button type="button" class="choice-button" data-invention="ambiente">🌿 Robô ambiental</button>
+                    <button type="button" class="choice-button" data-invention="saude">🩺 Tecnologia de saúde</button>
+                </div>
+                <p id="inventionResult" class="interaction-result" aria-live="polite">Escolha uma ideia para ver como ela poderia ajudar.</p>
+            </div>
+        </section>
+
+        <section id="pontos" class="pros-cons-section reveal">
+            <span class="section-kicker">VISÃO EQUILIBRADA</span>
+            <h2>⚖️ Pontos positivos e negativos das baratas</h2>
+            <p>O impacto depende da espécie e do ambiente. Uma barata silvestre tem um papel diferente de uma espécie que infesta cozinhas e outros espaços humanos.</p>
+            <div class="pros-cons-grid">
+                <article class="pros-panel">
+                    <h3>🌱 Pontos positivos</h3>
+                    <ul>
+                        <li>Decompõem matéria orgânica e ajudam a reciclar nutrientes.</li>
+                        <li>Servem de alimento para aves, répteis, anfíbios e outros animais.</li>
+                        <li>Fazem parte das cadeias alimentares e do equilíbrio dos ecossistemas.</li>
+                        <li>Suas adaptações inspiram pesquisas de biomecânica e robótica.</li>
+                    </ul>
+                </article>
+                <article class="cons-panel">
+                    <h3>⚠️ Pontos negativos</h3>
+                    <ul>
+                        <li>Algumas espécies urbanas podem transportar microrganismos em suas patas e no corpo.</li>
+                        <li>Podem contaminar alimentos e superfícies ao circular por lixo e esgoto.</li>
+                        <li>Infestações podem agravar alergias e problemas respiratórios em pessoas sensíveis.</li>
+                        <li>O controle exige higiene, vedação de frestas e, quando necessário, manejo profissional responsável.</li>
+                    </ul>
+                </article>
+            </div>
+            <p class="small-note">Importante: isso não significa que todas as espécies sejam pragas. Muitas vivem longe das casas e cumprem funções ecológicas importantes.</p>
+        </section>
+
+        <section id="missao" class="mission-section reveal">
+            <span class="section-kicker">APRENDER E AGIR</span>
+            <h2>🌍 Missão: ajudar pessoas e natureza</h2>
+            <p>Marque as ações que você pode colocar em prática. Sua lista fica salva neste navegador, sem precisar criar conta.</p>
+            <div class="mission-list">
+                <label><input type="checkbox" class="mission-check" value="compartilhar"> Compartilhar uma informação científica confiável com alguém.</label>
+                <label><input type="checkbox" class="mission-check" value="limpeza"> Manter alimentos bem guardados e o lixo fechado para evitar pragas.</label>
+                <label><input type="checkbox" class="mission-check" value="natureza"> Respeitar os animais silvestres e não destruir habitats.</label>
+                <label><input type="checkbox" class="mission-check" value="pesquisa"> Explorar uma pesquisa de ciência ou robótica inspirada na natureza.</label>
+            </div>
+            <div class="mission-progress"><div class="mission-progress-bar" id="missionProgressBar"></div></div>
+            <p id="missionProgressText" class="interaction-result" aria-live="polite">0 de 4 ações concluídas. Toda atitude consciente conta!</p>
+            <button class="button button-primary" id="shareMission" type="button">📣 Compartilhar a mensagem</button>
+            <p id="shareFeedback" class="small-note" aria-live="polite"></p>
+        </section>
+
         <!-- CURIOSIDADE -->
         <section>
             <h2>💡 Você sabia?</h2>
@@ -343,6 +413,7 @@
     <footer class="site-footer">
         <p>🪳 <strong>MUNDO DAS BARATAS</strong> · Projeto de Biologia</p>
         <p>Feito com curiosidade e ciência · 2026</p>
+        <p><a href="#missao">Faça sua parte</a> · <a href="#tecnologia">Ciência que inspira</a></p>
     </footer>
 
     <script src="script.js"></script>
